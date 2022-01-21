@@ -2,7 +2,9 @@ language: python
 services:
   - docker
 install: 
-  - docker images data-handling .
+  - docker build -t data-handling .
+script: 
+  - docker images data-handling
 after_success: 
   - docker tag multiqc eferos93/data-handling:latest
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
