@@ -1,4 +1,5 @@
 import pandas as pd
+import sys
 
 # given the filename of a datasheet returns a dataframe containing the [Data] in the smaple sheet
 def get_ss(file_name, tag='[Data]'):
@@ -15,3 +16,5 @@ def get_samples(file_name):
     sn=df_ss["Sample_ID"].apply(lambda x : str(x))+"_S"+df_ss["I7_Index_ID"].apply(lambda x : str(int(x[3:])))
     df_samples=pd.DataFrame(sn, columns=["sample_name"])
     return df_samples
+
+get_samples(sys.argv[0]).to_csv(sys.argv[1], index=False)
