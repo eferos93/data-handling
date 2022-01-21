@@ -6,6 +6,6 @@ install:
 script: 
   - docker images data-handling
 after_success: 
-  - docker tag multiqc eferos93/data-handling:latest
+  - docker tag data-handling eferos93/data-handling:latest
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
   - docker push eferos93/data-handling
