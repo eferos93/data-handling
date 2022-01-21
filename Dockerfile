@@ -31,6 +31,6 @@ LABEL license="https://github.com/eferos93/data-handling/blob/main/LICENSE"
 LABEL maintainer="Eros Fabrici"
 LABEL maintainer.email="eros.fabrici@gmail.com"
 
-COPY data_handling.py .
+COPY data_handling_utils.py .
 
-ENTRYPOINT ["python3", "data_handling.py"]
+ENTRYPOINT ["python3", "data_handling_utils.py"]
