@@ -33,4 +33,6 @@ LABEL maintainer.email="eros.fabrici@gmail.com"
 
 COPY data_handling_utils.py .
 
+RUN mkdir data
+
 ENTRYPOINT ["python3", "data_handling_utils.py"]
