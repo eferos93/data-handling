@@ -33,6 +33,7 @@ LABEL maintainer.email="eros.fabrici@gmail.com"
 
 COPY data_handling_utils.py .
 
-# RUN mkdir genomic_data
+RUN mkdir genomic_data_test
+RUN mkdir production_directory
 
 ENTRYPOINT ["python3", "data_handling_utils.py"]
