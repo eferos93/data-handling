@@ -19,8 +19,6 @@ def get_samples(file_name):
     return df_samples
 
 # argv[1] is the path to the sample_sheet, argv[2] the output path
-print(sys.argv[1])
-print(sys.argv[2])
 df_samples = get_samples(sys.argv[1])
 df_samples.to_csv(sys.argv[2], index=False)
 
