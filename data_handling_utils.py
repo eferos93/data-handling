@@ -18,9 +18,9 @@ def get_samples(file_name):
     df_samples = pd.DataFrame(sn, columns=["sample_name"])
     return df_samples
 
-# argv[0] is the path to the sample_sheet, argv[1] the output path
-print(sys.argv[0])
+# argv[1] is the path to the sample_sheet, argv[2] the output path
 print(sys.argv[1])
+print(sys.argv[2])
 df_samples = get_samples(sys.argv[0])
 df_samples.to_csv(sys.argv[1], index=False)
 
