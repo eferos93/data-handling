@@ -21,8 +21,8 @@ def get_samples(file_name):
 # argv[1] is the path to the sample_sheet, argv[2] the output path
 print(sys.argv[1])
 print(sys.argv[2])
-df_samples = get_samples(sys.argv[0])
-df_samples.to_csv(sys.argv[1], index=False)
+df_samples = get_samples(sys.argv[1])
+df_samples.to_csv(sys.argv[2], index=False)
 
 # get the names of the fastq files that will be produced, will be used then by fastqc
 fastq_names = []
