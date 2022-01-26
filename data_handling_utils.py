@@ -14,7 +14,7 @@ def get_ss(file_name, tag='[Data]'):
 # given a dataframe with the [Data] contained in a sample sheet returns a dataframe with deduced sample names
 def get_samples(file_name):
     df_ss = get_ss(file_name)
-    print(df_ss.columns())
+    print(list(df_ss.columns.values))
     sn = df_ss["Sample_ID"].apply(lambda x : str(x))+"_S" + df_ss["I7_Index_ID"].apply(lambda x : str(int(x[3:])))
     df_samples = pd.DataFrame(sn, columns=["sample_name"])
     return df_samples
