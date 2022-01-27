@@ -34,6 +34,6 @@ LABEL maintainer.email="eros.fabrici@gmail.com"
 COPY data_handling_utils.py .
 
 RUN mkdir genomic_data_test
-RUN mkdir production_directory
+RUN mkdir illumina_run
 
 ENTRYPOINT ["python3", "data_handling_utils.py"]
