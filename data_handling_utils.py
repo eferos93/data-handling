@@ -19,8 +19,7 @@ def get_samples(file_name):
     df_samples = pd.DataFrame(sn, columns=["sample_name"])
     return df_samples
 
-# argv[1] is the path to the sample_sheet, argv[2] the output path
-import os
+# argv[1] is the path to the sample_sheet, argv[2] the output path, argv[3] the filename
 df_samples = get_samples(sys.argv[1])
 output_path = Path(sys.argv[2])
 output_path.mkdir(parents=True, exist_ok=True)
