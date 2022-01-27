@@ -20,7 +20,7 @@ def get_samples(file_name):
 
 # argv[1] is the path to the sample_sheet, argv[2] the output path
 import os
-print(os.getcwd)
+print(os.getcwd())
 df_samples = get_samples(sys.argv[1])
 df_samples.to_csv(sys.argv[2], index=False)
 
