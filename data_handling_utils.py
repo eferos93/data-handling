@@ -23,7 +23,7 @@ def get_samples(file_name):
 df_samples = get_samples(sys.argv[1])
 output_path = Path(sys.argv[2])
 output_path.mkdir(parents=True, exist_ok=True)
-df_samples.to_csv(sys.argv[2] + sys.argv[3], index=False)
+df_samples.to_csv(sys.argv[2] + '/' + sys.argv[3], index=False)
 
 # get the names of the fastq files that will be produced, will be used then by fastqc
 fastq_names = []
