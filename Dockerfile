@@ -33,6 +33,7 @@ LABEL maintainer.email="eros.fabrici@gmail.com"
 
 COPY data_handling_utils.py .
 
+WORKDIR /
 RUN mkdir genomic_data_test
 RUN mkdir illumina_run
 
