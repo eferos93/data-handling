@@ -31,9 +31,9 @@ LABEL license="https://github.com/eferos93/data-handling/blob/main/LICENSE"
 LABEL maintainer="Eros Fabrici"
 LABEL maintainer.email="eros.fabrici@gmail.com"
 
+WORKDIR /
 COPY data_handling_utils.py .
 
-WORKDIR /
 RUN mkdir genomic_data_test
 RUN mkdir illumina_run
 
