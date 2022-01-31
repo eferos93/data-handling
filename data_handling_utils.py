@@ -44,7 +44,7 @@ fastq_names = []
 for row in df_samples.reset_index().itertuples():
     temp = {}
     for i in ["1", "2"]:
-        temp["file" + i] = row.sample_name + "_R" + i + "_001.fastq.gz"
+        temp["file" + i] = row.Sample_Name + "_R" + i + "_001.fastq.gz"
     fastq_names.append(temp)
 
 json.dump(fastq_names, sys.stdout)
