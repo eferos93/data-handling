@@ -22,7 +22,7 @@ def build_sample_name(df_sample_sheet):
     else:
         sample_names = df_sample_sheet["Sample_Name"].apply(lambda x: str(x)) + "_S" + df_sample_sheet["Sample_Name"].apply(lambda x: str(x))
         if not df_sample_sheet["Sample_Project"].isnull().all():
-            sample_names = df_sample_sheet["Sample_Project"].apply(lambda x: str(x)) + "/" + df_sample_sheet["Sample_Name"].apply(lambda x: str(x))
+            sample_names = df_sample_sheet["Sample_Project"].apply(lambda x: str(x)) + "/" + sample_names
         return pd.DataFrame(sample_names, columns=["Sample_Name"])
 
 # given a dataframe with the [Data] contained in a sample sheet returns a dataframe with deduced sample names
