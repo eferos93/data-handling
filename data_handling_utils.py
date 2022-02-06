@@ -1,7 +1,11 @@
 from pathlib import Path
+from time import sleep
+from typing import Optional
 import pandas as pd
 import sys
 import json
+import os
+import fnmatch
 
 # given the filename of a datasheet returns a dataframe containing the [Data] in the smaple sheet
 def get_ss(file_name, tag='[Data]'):
@@ -28,13 +32,32 @@ def build_sample_name(df_sample_sheet):
 # given a dataframe with the [Data] contained in a sample sheet returns a dataframe with deduced sample names
 def get_samples(file_name):
     df_ss = get_ss(file_name)
-    # sn = df_ss["Sample_ID"].apply(lambda x : str(x)) + "_S" + df_ss["I7_Index_ID"].apply(lambda x : str(int(x[3:])))
-    # df_samples = pd.DataFrame(sn, columns=["Sample_Name"])
-    # return df_samples
     return build_sample_name(df_ss)
 
-# argv[1] is the path to the sample_sheet, argv[2] the output path, argv[3] the filename
-df_samples = get_samples(sys.argv[1])
+
+def find(pattern, path):
+    for root, _, files in os.walk(path):
+        for name in files:
+            if fnmatch.fnmatch(name, pattern):
+                return Optional[os.path.join(root, name)]
+    return None
+
+def wait_sample_sheet(input_dir):
+    sampleSheetPath = find("*.csv", input_dir)
+    while sampleSheetPath is None:
+        sleep(60)
+        sampleSheetPath = find("*.csv", input_dir)
+    return sampleSheetPath
+
+
+# argv[1] is the path to the input_dir, argv[2] the output path, argv[3] the filename
+sampleSheetPath = wait_sample_sheet(sys.argv[1])
+if sampleSheetPath is None:
+    raise Exception("No Sample Sheet Provided!")
+
+sampleSheetPath: str = sampleSheetPath
+print(sampleSheetPath)
+df_samples = get_samples(sampleSheetPath)
 output_path = Path(sys.argv[2])
 output_path.mkdir(parents=True, exist_ok=True)
 df_samples.to_csv(sys.argv[2] + '/' + sys.argv[3], index=False)
