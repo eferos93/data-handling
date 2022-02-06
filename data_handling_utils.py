@@ -54,7 +54,7 @@ def wait_sample_sheet(input_dir):
 
 # argv[1] is the path to the input_dir, argv[2] the output path, argv[3] the filename
 print("Starting to look for the sample sheet")
-print(sys.argv(1))
+print(sys.argv[1])
 
 sampleSheetPath = wait_sample_sheet(sys.argv[1])
 if sampleSheetPath is None:
