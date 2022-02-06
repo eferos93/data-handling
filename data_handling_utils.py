@@ -72,4 +72,4 @@ for row in df_samples.reset_index().itertuples():
         temp["file" + i] = row.Sample_Name + "_R" + i + "_001.fastq.gz"
     fastq_names.append(temp)
 
-json.dump({"sample_sheet_path": sampleSheetPath, "fastq_names": fastq_names}, sys.stdout)
+json.dump([sampleSheetPath, fastq_names], sys.stdout)
