@@ -89,11 +89,11 @@ if sampleSheetName == "":
     raise Exception("No Sample Sheet Provided!")
 
 print(sampleSheetName)
-sampleSheetPath = os.join(sys.argv[1], sampleSheetName)
+sampleSheetPath = os.path.join(sys.argv[1], sampleSheetName)
 df_samples = get_samples(sampleSheetPath)
 output_path = Path(sys.argv[2])
 output_path.mkdir(parents=True, exist_ok=True)
-df_samples.to_csv(sys.argv[2] + '/' + sys.argv[3], index=False)
+df_samples.to_csv(os.path.join(sys.argv[2], sys.argv[3]), index=False)
 
 # get the names of the fastq files that will be produced, will be used then by fastqc
 fastq_names = []
