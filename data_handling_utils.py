@@ -5,6 +5,7 @@ import sys
 import json
 import os
 import fnmatch
+from logging import info
 
 # given the filename of a datasheet returns a dataframe containing the [Data] in the smaple sheet
 def get_ss(file_name, tag='[Data]'):
@@ -44,7 +45,7 @@ def wait_sample_sheet(input_dir):
 
     sampleSheetPath = find('*.csv', os.listdir(input_dir))
     while sampleSheetPath == "":
-        print("Sample Sheet not found yet...")
+        info("Sample Sheet not found yet...")
         sleep(60)
         sampleSheetPath = find('*.csv', os.listdir(input_dir))
         
@@ -81,14 +82,14 @@ def walklevel(path, depth = 1):
 
 
 # argv[1] is the path to the input_dir, argv[2] the output path, argv[3] the filename
-print("Starting to look for the sample sheet")
-print(sys.argv[1])
+info("Starting to look for the sample sheet")
+info(sys.argv[1])
 
 sampleSheetName = wait_sample_sheet(sys.argv[1])
 if sampleSheetName == "":
     raise Exception("No Sample Sheet Provided!")
 
-print(sampleSheetName)
+info(sampleSheetName)
 sampleSheetPath = os.path.join(sys.argv[1], sampleSheetName)
 df_samples = get_samples(sampleSheetPath)
 output_path = Path(sys.argv[2])
