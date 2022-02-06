@@ -57,10 +57,9 @@ print("Starting to look for the sample sheet")
 print(sys.argv[1])
 
 sampleSheetPath = wait_sample_sheet(sys.argv[1])
-if sampleSheetPath is None:
+if sampleSheetPath == "":
     raise Exception("No Sample Sheet Provided!")
 
-sampleSheetPath: str = sampleSheetPath
 print(sampleSheetPath)
 df_samples = get_samples(sampleSheetPath)
 output_path = Path(sys.argv[2])
