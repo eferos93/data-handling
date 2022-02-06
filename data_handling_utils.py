@@ -73,4 +73,4 @@ for row in df_samples.reset_index().itertuples():
         temp["file" + i] = row.Sample_Name + "_R" + i + "_001.fastq.gz"
     fastq_names.append(temp)
 
-json.dump({"sample-sheet-path": sampleSheetPath, "fastq-names": fastq_names}, sys.stdout)
+json.dump({"sample-sheet-path": sampleSheetPath, "fastq-names": json.dumps(fastq_names)}, sys.stdout)
