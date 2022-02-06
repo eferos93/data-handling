@@ -39,12 +39,12 @@ def find(pattern, path):
     for root, _, files in os.walk(path):
         for name in files:
             if fnmatch.fnmatch(name, pattern):
-                return Optional[os.path.join(root, name)]
-    return None
+                return os.path.join(root, name)
+    return ""
 
 def wait_sample_sheet(input_dir):
     sampleSheetPath = find("*.csv", input_dir)
-    while sampleSheetPath is None:
+    while sampleSheetPath == "":
         print("Sample Sheet not found yet...")
         sleep(60)
         sampleSheetPath = find("*.csv", input_dir)
