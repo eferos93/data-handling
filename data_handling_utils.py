@@ -45,8 +45,10 @@ def find(pattern, path):
 def wait_sample_sheet(input_dir):
     sampleSheetPath = find("*.csv", input_dir)
     while sampleSheetPath is None:
+        print("Sample Sheet not found yet...")
         sleep(60)
         sampleSheetPath = find("*.csv", input_dir)
+        
     return sampleSheetPath
 
 
