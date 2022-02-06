@@ -42,11 +42,11 @@ def find(pattern, files):
 
 def wait_sample_sheet(input_dir):
 
-    sampleSheetPath = find("*.csv", walklevel(input_dir))
+    sampleSheetPath = find('*.csv', os.listdir(input_dir))
     while sampleSheetPath == "":
         print("Sample Sheet not found yet...")
         sleep(60)
-        sampleSheetPath = find("*.csv", walklevel(input_dir))
+        sampleSheetPath = find('*.csv', os.listdir(input_dir))
         
     return sampleSheetPath
 
@@ -60,12 +60,12 @@ def walklevel(path, depth = 1):
     # If depth is negative, just walk
     # Not using yield from for python2 compat
     # and copy dirs to keep consistant behavior for depth = -1 and depth = inf
-    if depth < 0:
-        for root, dirs, files in os.walk(path):
-            yield root, dirs[:], files
-        return
-    elif depth == 0:
-        return
+    # if depth < 0:
+    #     for root, dirs, files in os.walk(path):
+    #         yield root, dirs[:], files
+    #     return
+    # elif depth == 0:
+    #     return
 
     # path.count(os.path.sep) is safe because
     # - On Windows "\\" is never allowed in the name of a file or directory
