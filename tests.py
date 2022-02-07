@@ -1,5 +1,6 @@
 from distutils.command.build import build
 import io
+import json
 import unittest
 import unittest.mock
 from textwrap import wrap
@@ -37,7 +38,7 @@ class TestDataHandling(unittest.TestCase):
     @unittest.mock.patch('sys.stdout', new_callable=io.StringIO)
     def assert_stdout(self, input_dir, output_path, samples_filename, expected_output, mock_stdout):
         build_fastq_names(input_dir, output_path, samples_filename)
-        self.assertEqual(wrap(mock_stdout.getvalue()), wrap(expected_output))
+        self.assertEqual(json.loads(mock_stdout.getvalue()), json.loads(expected_output))
 
     def test_data_handling(self):
         self.assert_stdout('test_folder_2', 'test_folder_2/output/', 'samples.csv', expected_output2)
