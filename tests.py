@@ -32,6 +32,7 @@ class TestDataHandling(unittest.TestCase):
     def assert_stdout(self, input_dir, output_path, samples_filename, expected_output, mock_stdout):
         build_fastq_names(input_dir, output_path, samples_filename)
         output = json.loads(mock_stdout.getvalue())
+        print(mock_stdout.getvalue())
         ex_output = json.loads(expected_output)
         self.assertEqual(output, ex_output)
 
