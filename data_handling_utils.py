@@ -24,7 +24,7 @@ def build_sample_name(df_sample_sheet):
 
         return pd.DataFrame(sample_names, columns=["Sample_Name"])   
     else:
-        sample_names = df_sample_sheet["Sample_Name"].apply(lambda x: str(x)) + "_S" + df_sample_sheet["Sample_Name"].apply(lambda x: str(x))
+        sample_names = df_sample_sheet["Sample_Name"].apply(lambda x: str(x)) + "_S" + [*range(1, len(df_sample_sheet["Sample_Name"]) + 1)]# df_sample_sheet["Sample_Name"].apply(lambda x: str(x))
         if not df_sample_sheet["Sample_Project"].isnull().all():
             sample_names = df_sample_sheet["Sample_Project"].apply(lambda x: str(x)) + "/" + sample_names
         return pd.DataFrame(sample_names, columns=["Sample_Name"])
