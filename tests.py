@@ -50,9 +50,15 @@ class TestCaseBase(unittest.TestCase):
             raise AssertionError("File does not exist: %s" % str(path))
 
 class ActualTest(TestCaseBase):
+
+    def execute_program(input_dir, output_path, samples_filename):
+        build_fastq_names(input_dir, output_path, samples_filename)
+
     def test(self):
+        self.execute_program('test_folder_1', 'test_folder_1/output', 'samples.csv')
         path = pl.Path("test_folder_1/output/samples.csv")
         self.assertIsFile(path)
+        self.execute_program('test_folder_2', 'test_folder_2/output', 'samples.csv')
         path = pl.Path("test_folder_2/output/samples.csv")
         self.assertIsFile(path)
 
