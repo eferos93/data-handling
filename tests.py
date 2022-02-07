@@ -32,7 +32,7 @@ expected_output2 = """{"sample-sheet-path": "test_folder_2/output/210713_M70903_
 ": \"88_S8_R2_001.fastq.gz\"}, {\"file1\": \"61_S9_R1_001.fastq.gz\", \"file2\": \"61_S9_R2_001.fastq.gz\"}]"}"""
 
 class TestDataHandling(unittest.TestCase):
-
+    maxDiff = None
     @unittest.mock.patch('sys.stdout', new_callable=io.StringIO)
     def assert_stdout(self, input_dir, output_path, samples_filename, expected_output, mock_stdout):
         build_fastq_names(input_dir, output_path, samples_filename)
