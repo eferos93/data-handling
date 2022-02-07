@@ -39,5 +39,6 @@ class TestDataHandling(unittest.TestCase):
         self.assertEqual(mock_stdout.getvalue(), expected_output)
 
     def test_data_handling(self):
-        self.assert_stdout('test_folder_1', 'test_folder_1/output/', 'samples.csv', expected_output1)
         self.assert_stdout('test_folder_2', 'test_folder_2/output/', 'samples.csv', expected_output2)
+        self.assert_stdout('test_folder_1', 'test_folder_1/output/', 'samples.csv', expected_output1)
+        
