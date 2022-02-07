@@ -5,8 +5,7 @@ import unittest.mock
 
 from data_handling_utils import build_fastq_names
 
-expected_output1 ="""
-{"sample-sheet-path": "genomic_data_test/watched_dir/210818_M70903_0027_000000000-JVRB4/SampleSheet.csv", "fastq-names": "[{\"file1\": \"Survey_Covid24/1_S1_R1_001.fastq.gz\", \"f
+expected_output1 ="""{"sample-sheet-path": "test_folder_1/output/210818_M70903_0027_000000000-JVRB4/SampleSheet.csv", "fastq-names": "[{\"file1\": \"Survey_Covid24/1_S1_R1_001.fastq.gz\", \"f
 ile2\": \"Survey_Covid24/1_S1_R2_001.fastq.gz\"}, {\"file1\": \"Survey_Covid24/2_S2_R1_001.fastq.gz\", \"file2\": \"Survey_Covid24/2_S2_R2_001.fastq.gz\"}, {\"file1\": \"Survey_Co
 vid24/3_S3_R1_001.fastq.gz\", \"file2\": \"Survey_Covid24/3_S3_R2_001.fastq.gz\"}, {\"file1\": \"Survey_Covid24/4_S4_R1_001.fastq.gz\", \"file2\": \"Survey_Covid24/4_S4_R2_001.fas
 tq.gz\"}, {\"file1\": \"Survey_Covid24/5_S5_R1_001.fastq.gz\", \"file2\": \"Survey_Covid24/5_S5_R2_001.fastq.gz\"}, {\"file1\": \"Survey_Covid24/6_S6_R1_001.fastq.gz\", \"file2\":
@@ -24,10 +23,9 @@ d24/13_S13_R1_001.fastq.gz\", \"file2\": \"Survey_Covid24/13_S13_R2_001.fastq.gz
 Survey_Covid24/24_S24_R2_001.fastq.gz\"}, {\"file1\": \"Survey_Covid24/25_S25_R1_001.fastq.gz\", \"file2\": \"Survey_Covid24/25_S25_R2_001.fastq.gz\"}, {\"file1\": \"Survey_Covid2
 4/26_S26_R1_001.fastq.gz\", \"file2\": \"Survey_Covid24/26_S26_R2_001.fastq.gz\"}, {\"file1\": \"Survey_Covid24/27_S27_R1_001.fastq.gz\", \"file2\": \"Survey_Covid24/27_S27_R2_001
 .fastq.gz\"}, {\"file1\": \"Survey_Covid24/28_S28_R1_001.fastq.gz\", \"file2\": \"Survey_Covid24/28_S28_R2_001.fastq.gz\"}, {\"file1\": \"Survey_Covid24/29_S29_R1_001.fastq.gz\",
-\"file2\": \"Survey_Covid24/29_S29_R2_001.fastq.gz\"}, {\"file1\": \"Survey_Covid24/30_S30_R1_001.fastq.gz\", \"file2\": \"Survey_Covid24/30_S30_R2_001.fastq.gz\"}]"}
-"""
+\"file2\": \"Survey_Covid24/29_S29_R2_001.fastq.gz\"}, {\"file1\": \"Survey_Covid24/30_S30_R1_001.fastq.gz\", \"file2\": \"Survey_Covid24/30_S30_R2_001.fastq.gz\"}]"}"""
 
-expected_output2 = """{"sample-sheet-path": "genomic_data_test/watched_dir/210713_M70903_0024_000000000-JLY64/SampleSheet.csv", "fastq-names": "[{\"file1\": \"14_S1_R1_001.fastq.gz\", \"file2\": \"14_S
+expected_output2 = """{"sample-sheet-path": "test_folder_2/output/210713_M70903_0024_000000000-JLY64/SampleSheet.csv", "fastq-names": "[{\"file1\": \"14_S1_R1_001.fastq.gz\", \"file2\": \"14_S
 1_R2_001.fastq.gz\"}, {\"file1\": \"44_S2_R1_001.fastq.gz\", \"file2\": \"44_S2_R2_001.fastq.gz\"}, {\"file1\": \"67_S3_R1_001.fastq.gz\", \"file2\": \"67_S3_R2_001.fastq.gz\"}, {
 \"file1\": \"68_S4_R1_001.fastq.gz\", \"file2\": \"68_S4_R2_001.fastq.gz\"}, {\"file1\": \"72_S5_R1_001.fastq.gz\", \"file2\": \"72_S5_R2_001.fastq.gz\"}, {\"file1\": \"76_S6_R1_0
 01.fastq.gz\", \"file2\": \"76_S6_R2_001.fastq.gz\"}, {\"file1\": \"87_S7_R1_001.fastq.gz\", \"file2\": \"87_S7_R2_001.fastq.gz\"}, {\"file1\": \"88_S8_R1_001.fastq.gz\", \"file2\
