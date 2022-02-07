@@ -31,13 +31,13 @@ expected_output2 = """{"sample-sheet-path": "test_folder_2/output/210713_M70903_
 01.fastq.gz\", \"file2\": \"76_S6_R2_001.fastq.gz\"}, {\"file1\": \"87_S7_R1_001.fastq.gz\", \"file2\": \"87_S7_R2_001.fastq.gz\"}, {\"file1\": \"88_S8_R1_001.fastq.gz\", \"file2\
 ": \"88_S8_R2_001.fastq.gz\"}, {\"file1\": \"61_S9_R1_001.fastq.gz\", \"file2\": \"61_S9_R2_001.fastq.gz\"}]"}"""
 
-class TestFizzBuzz(unittest.TestCase):
+class TestDataHandling(unittest.TestCase):
 
     @unittest.mock.patch('sys.stdout', new_callable=io.StringIO)
     def assert_stdout(self, input_dir, output_path, samples_filename, expected_output, mock_stdout):
         build_fastq_names(input_dir, output_path, samples_filename)
         self.assertEqual(mock_stdout.getvalue(), expected_output)
 
-    def test_only_numbers(self):
+    def test_data_handling(self):
         self.assert_stdout('test_folder_1', 'test_folder_1/output/', 'samples.csv', expected_output1)
         self.assert_stdout('test_folder_2', 'test_folder_2/output/', 'samples.csv', expected_output2)
