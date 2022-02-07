@@ -51,7 +51,7 @@ class TestCaseBase(unittest.TestCase):
 
 class ActualTest(TestCaseBase):
 
-    def execute_program(input_dir, output_path, samples_filename):
+    def execute_program(self, input_dir, output_path, samples_filename):
         build_fastq_names(input_dir, output_path, samples_filename)
 
     def test(self):
