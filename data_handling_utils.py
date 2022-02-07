@@ -53,24 +53,28 @@ def wait_sample_sheet(input_dir):
 
 
 # argv[1] is the path to the input_dir, argv[2] the output path, argv[3] the filename
+def build_fastq_names(input_dir, output_path, samples_filename):
+    info("Starting to look for the sample sheet")
+    sampleSheetName = wait_sample_sheet(input_dir)
+    if sampleSheetName == "":
+        raise Exception("No Sample Sheet Provided!")
 
-info("Starting to look for the sample sheet")
-sampleSheetName = wait_sample_sheet(sys.argv[1])
-if sampleSheetName == "":
-    raise Exception("No Sample Sheet Provided!")
+    sampleSheetPath = os.path.join(input_dir, sampleSheetName)
+    df_samples = get_samples(sampleSheetPath)
+    output_path = Path(output_path)
+    output_path.mkdir(parents=True, exist_ok=True)
+    df_samples.to_csv(os.path.join(output_path, samples_filename), index=False)
 
-sampleSheetPath = os.path.join(sys.argv[1], sampleSheetName)
-df_samples = get_samples(sampleSheetPath)
-output_path = Path(sys.argv[2])
-output_path.mkdir(parents=True, exist_ok=True)
-df_samples.to_csv(os.path.join(sys.argv[2], sys.argv[3]), index=False)
+    # get the names of the fastq files that will be produced, will be used then by fastqc
+    fastq_names = []
+    for row in df_samples.reset_index().itertuples():
+        temp = {}
+        for i in ["1", "2"]:
+            temp["file" + i] = row.Sample_Name + "_R" + i + "_001.fastq.gz"
+        fastq_names.append(temp)
 
-# get the names of the fastq files that will be produced, will be used then by fastqc
-fastq_names = []
-for row in df_samples.reset_index().itertuples():
-    temp = {}
-    for i in ["1", "2"]:
-        temp["file" + i] = row.Sample_Name + "_R" + i + "_001.fastq.gz"
-    fastq_names.append(temp)
+    json.dump({"sample-sheet-path": sampleSheetPath, "fastq-names": json.dumps(fastq_names)}, sys.stdout)
 
-json.dump({"sample-sheet-path": sampleSheetPath, "fastq-names": json.dumps(fastq_names)}, sys.stdout)
+
+if __name__ == "__main__":
+    build_fastq_names(sys.argv[1], sys.argv[2], sys.argv[3])

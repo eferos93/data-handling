@@ -2,8 +2,10 @@ language: python
 services:
   - docker
 install: 
+  - pip install -r requirements.txt
   - docker build -t data-handling .
 script: 
+  - python -m unittest discover
   - docker images data-handling
 after_success: 
   - docker tag data-handling eferos93/data-handling:latest
