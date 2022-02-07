@@ -26,8 +26,7 @@ Survey_Covid24/24_S24_R2_001.fastq.gz"}, {"file1": "Survey_Covid24/25_S25_R1_001
 .fastq.gz"}, {"file1": "Survey_Covid24/28_S28_R1_001.fastq.gz", "file2": "Survey_Covid24/28_S28_R2_001.fastq.gz"}, {"file1": "Survey_Covid24/29_S29_R1_001.fastq.gz",
 "file2": "Survey_Covid24/29_S29_R2_001.fastq.gz"}, {"file1": "Survey_Covid24/30_S30_R1_001.fastq.gz", "file2": "Survey_Covid24/30_S30_R2_001.fastq.gz"}]"}"""
 
-expected_output2 = 
-r"""{"sample-sheet-path": "test_folder_2/SampleSheet2.csv", "fastq-names": "[{"file1": "14_S1_R1_001.fastq.gz", "file2": "14_S1_R2_001.fastq.gz"}, {"file1": "44_S2_R1_001.fastq.gz", "file2": "44_S2_R2_001.fastq.gz"}, {"file1": "67_S3_R1_001.fastq.gz", "file2": "67_S3_R2_001.fastq.gz"}, {"file1": "68_S4_R1_001.fastq.gz", "file2": "68_S4_R2_001.fastq.gz"}, {"file1": "72_S5_R1_001.fastq.gz", "file2": "72_S5_R2_001.fastq.gz"}, {"file1": "76_S6_R1_001.fastq.gz", "file2": "76_S6_R2_001.fastq.gz"}, {"file1": "87_S7_R1_001.fastq.gz", "file2": "87_S7_R2_001.fastq.gz"}, {"file1": "88_S8_R1_001.fastq.gz", "file2": "88_S8_R2_001.fastq.gz"}, {"file1": "61_S9_R1_001.fastq.gz", "file2": "61_S9_R2_001.fastq.gz"}]"}"""
+expected_output2 = """{"sample-sheet-path": "test_folder_2/SampleSheet2.csv", "fastq-names": "[{"file1": "14_S1_R1_001.fastq.gz", "file2": "14_S1_R2_001.fastq.gz"}, {"file1": "44_S2_R1_001.fastq.gz", "file2": "44_S2_R2_001.fastq.gz"}, {"file1": "67_S3_R1_001.fastq.gz", "file2": "67_S3_R2_001.fastq.gz"}, {"file1": "68_S4_R1_001.fastq.gz", "file2": "68_S4_R2_001.fastq.gz"}, {"file1": "72_S5_R1_001.fastq.gz", "file2": "72_S5_R2_001.fastq.gz"}, {"file1": "76_S6_R1_001.fastq.gz", "file2": "76_S6_R2_001.fastq.gz"}, {"file1": "87_S7_R1_001.fastq.gz", "file2": "87_S7_R2_001.fastq.gz"}, {"file1": "88_S8_R1_001.fastq.gz", "file2": "88_S8_R2_001.fastq.gz"}, {"file1": "61_S9_R1_001.fastq.gz", "file2": "61_S9_R2_001.fastq.gz"}]"}"""
 
 # class TestDataHandling(unittest.TestCase):
     # maxDiff = None
