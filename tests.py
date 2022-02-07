@@ -38,7 +38,9 @@ class TestDataHandling(unittest.TestCase):
     @unittest.mock.patch('sys.stdout', new_callable=io.StringIO)
     def assert_stdout(self, input_dir, output_path, samples_filename, expected_output, mock_stdout):
         build_fastq_names(input_dir, output_path, samples_filename)
-        self.assertEqual(json.loads(mock_stdout.getvalue()), json.loads(expected_output))
+        output = json.loads(mock_stdout.getvalue())
+        ex_output = json.loads(expected_output)
+        self.assertEqual(output, ex_output)
 
     def test_data_handling(self):
         self.assert_stdout('test_folder_2', 'test_folder_2/output/', 'samples.csv', expected_output2)
