@@ -61,6 +61,9 @@ class ActualTest(TestCaseBase):
         self.execute_program('test_folder_2', 'test_folder_2/output', 'samples.csv')
         path = pl.Path("test_folder_2/output/samples.csv")
         self.assertIsFile(path)
+        self.execute_program("test_folder_3", "test_folder_3/output", "samples.csv")
+        path = pl.Path("test_folder_3/output/samples.csv")
+        self.assertIsFile(path)
 
 
         
