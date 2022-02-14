@@ -43,25 +43,25 @@ def find(pattern, files):
             return name
     return ""
 
-def wait_sample_sheet(input_dir):
-    sample_sheet_name = find('*.csv', os.listdir(input_dir))
+def wait_sample_sheet(input_path):
+    sample_sheet_name = find('*.csv', os.listdir(input_path))
     while sample_sheet_name == "":
         info("Sample Sheet not found yet...")
         sleep(60)
-        sample_sheet_name = find('*.csv', os.listdir(input_dir))
+        sample_sheet_name = find('*.csv', os.listdir(input_path))
         
     return sample_sheet_name
 
 
 
 # argv[1] is the path to the input_dir, argv[2] the output path, argv[3] the filename
-def build_fastq_names(input_dir, output_path, samples_filename, sample_sheet_name):
+def build_fastq_names(input_path, output_path, samples_filename, sample_sheet_name):
     info("Starting to look for the sample sheet")
-    # sampleSheetName = wait_sample_sheet(input_dir)
+    # sampleSheetName = wait_sample_sheet(input_path)
     # if sampleSheetName == "":
     #     raise Exception("No Sample Sheet Provided!")
 
-    sample_sheet_path = os.path.join(input_dir, sample_sheet_name)
+    sample_sheet_path = os.path.join(input_path, sample_sheet_name)
     df_samples = get_samples(sample_sheet_path)
     output_path = Path(output_path)
     output_path.mkdir(parents=True, exist_ok=True)
