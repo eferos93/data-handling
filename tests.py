@@ -1,13 +1,8 @@
-from distutils.command.build import build
-import io
-import json
-import pathlib
 import unittest
 import unittest.mock
-from textwrap import wrap
 import pathlib as pl
 
-from data_handling_utils import build_fastq_names, main
+from data_handling_utils import main
 
 expected_output1 ="""{"sample-sheet-path": "test_folder_1/SampleSheet1.csv", "fastq-names": "[{"file1": "Survey_Covid24/1_S1_R1_001.fastq.gz", "file2": "Survey_Covid24/1_S1_R2_001.fastq.gz"}, {"file1": "Survey_Covid24/2_S2_R1_001.fastq.gz", "file2": "Survey_Covid24/2_S2_R2_001.fastq.gz"}, {"file1": "Survey_Covid24/3_S3_R1_001.fastq.gz", "file2": "Survey_Covid24/3_S3_R2_001.fastq.gz"}, {"file1": "Survey_Covid24/4_S4_R1_001.fastq.gz", "file2": "Survey_Covid24/4_S4_R2_001.fas
 tq.gz"}, {"file1": "Survey_Covid24/5_S5_R1_001.fastq.gz", "file2": "Survey_Covid24/5_S5_R2_001.fastq.gz"}, {"file1": "Survey_Covid24/6_S6_R1_001.fastq.gz", "file2": "Survey_Covid24/6_S6_R2_001.fastq.gz"}, {"file1": "Survey_Covid24/7_S7_R1_001.fastq.gz", "file2": "Survey_Covid24/7_S7_R2_001.fastq.gz"}, {"file1": "Survey_Covid24/8
