@@ -86,7 +86,7 @@ def main(arguments):
         if sample_sheet_name == "":
             raise Exception("No Sample Sheet Provided!")
     
-        build_fastq_names(arguments[1], arguments[2], arguments[3], sample_sheet_name)
+    build_fastq_names(arguments[1], arguments[2], arguments[3], sample_sheet_name)
 
 
 if __name__ == "__main__":
