@@ -78,7 +78,7 @@ def build_fastq_names(input_path, output_path, samples_filename, sample_sheet_na
     json.dump({"sample-sheet-path": sample_sheet_path, "fastq-names": json.dumps(fastq_names)}, sys.stdout)
 
 
-def main(arguments):
+def get_input(arguments):
     if len(sys.argv) == 5:
         sample_sheet_name = arguments[4]
     else:
@@ -90,4 +90,4 @@ def main(arguments):
 
 
 if __name__ == "__main__":
-    main(sys.argv)
+    get_input(sys.argv)
