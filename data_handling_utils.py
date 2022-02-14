@@ -41,26 +41,26 @@ def find(pattern, files):
             return name
     return ""
 
-def wait_sample_sheet(input_dir):
-    sampleSheetPath = find('*.csv', os.listdir(input_dir))
-    while sampleSheetPath == "":
+def wait_sample_sheet(input_path):
+    sample_sheet_name = find('*.csv', os.listdir(input_path))
+    while sample_sheet_name == "":
         info("Sample Sheet not found yet...")
         sleep(60)
-        sampleSheetPath = find('*.csv', os.listdir(input_dir))
+        sample_sheet_name = find('*.csv', os.listdir(input_path))
         
-    return sampleSheetPath
+    return sample_sheet_name
 
 
 
 # argv[1] is the path to the input_dir, argv[2] the output path, argv[3] the filename
-def build_fastq_names(input_dir, output_path, samples_filename):
+def build_fastq_names(input_path, output_path, samples_filename, sample_sheet_name):
     info("Starting to look for the sample sheet")
-    sampleSheetName = wait_sample_sheet(input_dir)
-    if sampleSheetName == "":
-        raise Exception("No Sample Sheet Provided!")
+    # sampleSheetName = wait_sample_sheet(input_path)
+    # if sampleSheetName == "":
+    #     raise Exception("No Sample Sheet Provided!")
 
-    sampleSheetPath = os.path.join(input_dir, sampleSheetName)
-    df_samples = get_samples(sampleSheetPath)
+    sample_sheet_path = os.path.join(input_path, sample_sheet_name)
+    df_samples = get_samples(sample_sheet_path)
     output_path = Path(output_path)
     output_path.mkdir(parents=True, exist_ok=True)
     df_samples.to_csv(os.path.join(output_path, samples_filename), index=False)
@@ -73,8 +73,19 @@ def build_fastq_names(input_dir, output_path, samples_filename):
             temp["file" + i] = row.Sample_Name + "_R" + i + "_001.fastq.gz"
         fastq_names.append(temp)
 
-    json.dump({"sample-sheet-path": sampleSheetPath, "fastq-names": json.dumps(fastq_names)}, sys.stdout)
+    json.dump({"sample-sheet-path": sample_sheet_path, "fastq-names": json.dumps(fastq_names)}, sys.stdout)
+
+
+def get_input(arguments):
+    if len(sys.argv) == 5:
+        sample_sheet_name = arguments[4]
+    else:
+        sample_sheet_name = wait_sample_sheet(arguments[1])
+        if sample_sheet_name == "":
+            raise Exception("No Sample Sheet Provided!")
+    
+    build_fastq_names(arguments[1], arguments[2], arguments[3], sample_sheet_name)
 
 
 if __name__ == "__main__":
-    build_fastq_names(sys.argv[1], sys.argv[2], sys.argv[3])
+    get_input(sys.argv)
