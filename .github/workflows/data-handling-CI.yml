@@ -30,7 +30,7 @@ jobs:
         flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
     - name: Test with unittest
       run: python -m unittest discover
-    - uses: actions/checkout@v2
+    #- uses: actions/checkout@v2
     - name: Build the Docker image
       run: docker build -t data-handling .
     - name: Log in to Docker Hub
@@ -48,5 +48,5 @@ jobs:
       with:
         context: .
         push: true
-        tags: ${{ steps.meta.outputs.tags }}
-        labels: latest #${{ steps.meta.outputs.labels }}
+        tags: eferos93/data-handling #${{ steps.meta.outputs.tags }}
+        labels: ${{ steps.meta.outputs.labels }}
