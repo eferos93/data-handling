@@ -54,7 +54,7 @@ def wait_sample_sheet(input_path):
 
 
 
-# argv[1] is the path to the input_dir, argv[2] the output path, argv[3] the filename
+
 def build_fastq_names(input_path, output_path, samples_filename, sample_sheet_name):
     info("Starting to look for the sample sheet")
     # sampleSheetName = wait_sample_sheet(input_path)
@@ -88,6 +88,6 @@ def get_input(arguments):
     
     build_fastq_names(arguments[1], arguments[2], arguments[3], sample_sheet_name)
 
-
+# argv[1] is the path to the input_dir, argv[2] the output path, argv[3] the filename and argv[4], which is optional, is the sample sheet path
 if __name__ == "__main__":
     get_input(sys.argv)
