@@ -17,6 +17,7 @@ def get_ss(file_name, tag='[Data]'):
     return df
 
 def build_sample_name(df_sample_sheet):
+    # typically this case fits with NovaSeq 600 datasets
     if df_sample_sheet["Sample_Name"].isnull().all():
         sample_names = df_sample_sheet["Sample_ID"].apply(lambda x : str(x)) + "_S" + df_sample_sheet["I7_Index_ID"].apply(lambda x : str(int(x[3:])))
         if not df_sample_sheet["Sample_Project"].isnull().all():
@@ -24,6 +25,7 @@ def build_sample_name(df_sample_sheet):
 
         return pd.DataFrame(sample_names, columns=["Sample_Name"])   
     else:
+        # while this case fits with the MiSeqDx
         sample_names = df_sample_sheet["Sample_Name"].apply(lambda x: str(x)) + "_S" + list(map(str, [*range(1, len(df_sample_sheet["Sample_Name"]) + 1)]))# df_sample_sheet["Sample_Name"].apply(lambda x: str(x))
         if not df_sample_sheet["Sample_Project"].isnull().all():
             sample_names = df_sample_sheet["Sample_Project"].apply(lambda x: str(x)) + "/" + sample_names
